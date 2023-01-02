@@ -47,19 +47,20 @@ modules:
       - DESTDIR=$(FLATPAK_DEST)
     sources:
       - type: archive
-        url: "https://www.rarlab.com/rar/unrarsrc-5.8.3.tar.gz"
+        url: https://www.rarlab.com/rar/unrarsrc-5.8.3.tar.gz
         sha256: 3591685c8f5bbcb0be09de3d0a0544adb88966b9cccb80986f6cd2b534fd91a6
 
   - name: mcomix
     buildsystem: simple
     build-commands:
-      - python ./setup.py install --single-version-externally-managed --root '/' --prefix $FLATPAK_DEST 
+      - python ./setup.py install --single-version-externally-managed --root '/' --prefix
+        $FLATPAK_DEST
       - python ./resize.py -s 128 mcomix/images/mcomix.png
       - install -Dm644 mcomix_128.png $FLATPAK_DEST/share/icons/hicolor/128x128/apps/mcomix.png
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/mcomix/MComix-2.0.2/mcomix-2.0.2.tar.gz
-        sha256: ef38d0713e56a07c72f98cc20c9eacda780e39f3b82fd7b1baa06a69c79c0a58
+        url: https://downloads.sourceforge.net/project/mcomix/MComix-2.1.0/mcomix-2.1.0.tar.gz
+        sha256: 368938a2a4deccef38abd20366f822df765e29f44bfada60ed01039a9d996695
         x-checker-data:
           type: anitya
           project-id: 8886
@@ -112,8 +113,8 @@ modules:
             buildsystem: meson
             sources:
               - type: archive
-                url: https://github.com/pygobject/pycairo/archive/v1.21.0/pycairo-v1.21.0.tar.gz
-                sha256: 5e88e718b58751c96aa496914dd1b6a0531488f501cedfb6cd40bb307d69b88c
+                url: https://github.com/pygobject/pycairo/archive/v1.23.0/pycairo-v1.23.0.tar.gz
+                sha256: caf1bdbae0d6e091e0b39a652574cf4ad610655f09da81b8a2e68f6fd3fa3147
                 x-checker-data:
                   type: anitya
                   project-id: 13166
@@ -123,12 +124,13 @@ modules:
       - name: python3-Pillow
         buildsystem: simple
         build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "Pillow>=6.0.0" --no-build-isolation
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "Pillow>=6.0.0" --no-build-isolation
         sources:
-        - type: file
-          url: https://files.pythonhosted.org/packages/8c/92/2975b464d9926dc667020ed1abfa6276e68c3571dcb77e43347e15ee9eed/Pillow-9.2.0.tar.gz
-          sha256: 75e636fd3e0fb872693f23ccb8a5ff2cd578801251f3a4f6854c6a5d437d3c04
-          x-checker-data:
-            type: pypi
-            name: Pillow
+          - type: file
+            url: https://files.pythonhosted.org/packages/8c/92/2975b464d9926dc667020ed1abfa6276e68c3571dcb77e43347e15ee9eed/Pillow-9.2.0.tar.gz
+            sha256: 75e636fd3e0fb872693f23ccb8a5ff2cd578801251f3a4f6854c6a5d437d3c04
+            x-checker-data:
+              type: pypi
+              name: Pillow
 
