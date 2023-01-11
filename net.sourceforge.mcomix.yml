@@ -68,7 +68,10 @@ modules:
           url-template: https://downloads.sourceforge.net/project/mcomix/MComix-$version/mcomix-$version.tar.gz
 
       - type: patch
-        path: appdata.patch
+        path: patch/appdata.patch
+
+      - type: patch
+        path: patch/glib_set_prgname.patch
 
       - type: script
         dest-filename: resize.py
