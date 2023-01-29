@@ -104,8 +104,8 @@ modules:
         buildsystem: meson
         sources:
           - type: archive
-            url: https://gitlab.gnome.org/GNOME/pygobject/-/archive/3.43.1/pygobject-3.43.1.tar.gz
-            sha256: d977e145fd9864fc49b9c7e6b6b0123e71e596b574aefdbfa09c6277c9865ece
+            url: https://gitlab.gnome.org/GNOME/pygobject/-/archive/3.42.2/pygobject-3.42.2.tar.gz
+            sha256: 56e6833f875bfe55409c780b9c87a9fc426c1cd55b3c65836de9d384d206201f
             x-checker-data:
               type: anitya
               project-id: 13158
