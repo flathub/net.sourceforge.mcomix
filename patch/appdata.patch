@@ -1,10 +1,11 @@
 --- mcomix-2.0.2/mime/mcomix.appdata.xml	2022-01-23 15:07:19.000000000 +0800
 +++ mcomix-2.0.2-p/mime/mcomix.appdata.xml	2022-09-07 18:38:40.935011783 +0800
-@@ -23,4 +23,10 @@
+@@ -23,4 +23,11 @@
   </screenshots>
   <url type="homepage">http://mcomix.sourceforge.net/</url>
   <project_group />
 + <releases>
++    <release version="2.1.1" date="2023-05-16"/>
 +    <release version="2.1.0" date="2022-12-17"/>
 +    <release version="2.0.2" date="2022-05-20"/>
 + </releases>

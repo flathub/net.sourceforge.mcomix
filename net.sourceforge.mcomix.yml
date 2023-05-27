@@ -70,8 +70,9 @@ modules:
       - type: patch
         path: patch/appdata.patch
 
-      - type: patch
-        path: patch/glib_set_prgname.patch
+      - type: shell
+        commands:
+          - sed -i "s:constants.APPNAME:'${FLATPAK_ID}':g" ./mcomix/run.py
 
       - type: script
         dest-filename: resize.py
