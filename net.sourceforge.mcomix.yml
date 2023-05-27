@@ -59,8 +59,8 @@ modules:
       - install -Dm644 mcomix_128.png $FLATPAK_DEST/share/icons/hicolor/128x128/apps/mcomix.png
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/mcomix/MComix-2.1.0/mcomix-2.1.0.tar.gz
-        sha256: 368938a2a4deccef38abd20366f822df765e29f44bfada60ed01039a9d996695
+        url: https://downloads.sourceforge.net/project/mcomix/MComix-2.1.1/mcomix-2.1.1.tar.gz
+        sha256: 3faa22ca77392c9496e686706193219c8d2435c213ed52ae69212e0def7060d5
         x-checker-data:
           type: anitya
           project-id: 8886
@@ -70,8 +70,9 @@ modules:
       - type: patch
         path: patch/appdata.patch
 
-      - type: patch
-        path: patch/glib_set_prgname.patch
+      - type: shell
+        commands:
+          - sed -i "s:constants.APPNAME:'${FLATPAK_ID}':g" ./mcomix/run.py
 
       - type: script
         dest-filename: resize.py
