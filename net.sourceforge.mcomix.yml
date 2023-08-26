@@ -12,6 +12,7 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --device=dri
+  - --env=TMPDIR=/var/tmp
   # need, for own file chooser
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
@@ -55,8 +56,11 @@ modules:
     build-commands:
       - python ./setup.py install --single-version-externally-managed --root '/' --prefix
         $FLATPAK_DEST
-      - python ./resize.py -s 128 mcomix/images/mcomix.png
-      - install -Dm644 mcomix_128.png $FLATPAK_DEST/share/icons/hicolor/128x128/apps/mcomix.png
+      - resize=$PWD/resize.py
+        cd $FLATPAK_DEST/share/icons/hicolor
+        for x in *;do
+          python ${resize} -s ${x%x*} ${x}/apps/${FLATPAK_ID}.png
+        done
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/mcomix/MComix-2.3.0/mcomix-2.3.0.tar.gz
