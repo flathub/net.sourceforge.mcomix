@@ -56,11 +56,16 @@ modules:
     build-commands:
       - python ./setup.py install --single-version-externally-managed --root '/' --prefix
         $FLATPAK_DEST
-      - resize=$PWD/resize.py
+      - |
+        resize=$PWD/resize.py
         cd $FLATPAK_DEST/share/icons/hicolor
-        for x in *;do
-          python ${resize} -s ${x%x*} ${x}/apps/${FLATPAK_ID}.png
+        for x in $(ls);do
+          [ -e ${x}/apps/mcomix.png ] || continue
+          size=${x%x*}
+          python ${resize} -s ${size} ${x}/apps/mcomix.png
+          echo ${size}_ok
         done
+        rm */apps/*.svg
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/mcomix/MComix-2.3.0/mcomix-2.3.0.tar.gz
@@ -102,7 +107,7 @@ modules:
             h = int(size if rate <= 1 else size/rate)
             img = img.resize((w,h), Image.Resampling.LANCZOS)
             fin_img.paste(img, (int((size-w)/2), int((size-h)/2)))
-            fin_img.save(path.with_stem(f'{path.stem}_{size}').name)
+            fin_img.save(path)
 
     modules:
       - name: pygobject
