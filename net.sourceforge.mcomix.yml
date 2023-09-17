@@ -1,10 +1,10 @@
 app-id: net.sourceforge.mcomix
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 rename-icon: mcomix
 rename-desktop-file: mcomix.desktop
-rename-appdata-file: mcomix.appdata.xml
+rename-appdata-file: mcomix.metainfo.xml
 command: mcomix
 finish-args:
   - --share=ipc
@@ -37,8 +37,8 @@ modules:
     sources:
       - type: archive
         strip-components: 0
-        url: https://7-zip.org/a/7z2201-src.tar.xz
-        sha256: 393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5
+        url: https://7-zip.org/a/7z2301-src.tar.xz
+        sha256: 356071007360e5a1824d9904993e8b2480b51b570e8c9faf7c0f58ebe4bf9f74
 
   - name: unrar
     no-autogen: true
@@ -54,8 +54,8 @@ modules:
   - name: mcomix
     buildsystem: simple
     build-commands:
-      - python ./setup.py install --single-version-externally-managed --root '/' --prefix
-        $FLATPAK_DEST
+      - pip3 install --verbose --exists-action=i --no-index --prefix=${FLATPAK_DEST} --no-build-isolation .[fileformats]
+      - cp -a share -t /app/
       - |
         resize=$PWD/resize.py
         cd $FLATPAK_DEST/share/icons/hicolor
@@ -68,8 +68,8 @@ modules:
         rm */apps/*.svg
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/mcomix/MComix-2.3.0/mcomix-2.3.0.tar.gz
-        sha256: 23933a9a1aeeaf3a31e4f13878d32c38567652a5c11f39b3e603b3f5c5bad3af
+        url: https://downloads.sourceforge.net/project/mcomix/MComix-3.0.0/mcomix-3.0.0.tar.gz
+        sha256: 2270c43d75e2878f64e4c886d5b013125c42894b364594d5ec979154c4dea004
         x-checker-data:
           type: anitya
           project-id: 8886
@@ -114,8 +114,8 @@ modules:
         buildsystem: meson
         sources:
           - type: archive
-            url: https://gitlab.gnome.org/GNOME/pygobject/-/archive/3.44.1/pygobject-3.44.1.tar.gz
-            sha256: f2c3f85161c32791a60c2f2b54fdb89e38f1acde0f6a8f0be4e0e36f73f144ad
+            url: https://gitlab.gnome.org/GNOME/pygobject/-/archive/3.46.0/pygobject-3.46.0.tar.gz
+            sha256: 70c7338e52fb919619ff98a92c1c27d056b96c600933566815018c1f196f1d1d
             x-checker-data:
               type: anitya
               project-id: 13158
@@ -141,9 +141,48 @@ modules:
             --prefix=${FLATPAK_DEST} "Pillow>=6.0.0" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/0f/8b/2ebaf9adcf4260c00f842154865f8730cf745906aa5dd499141fb6063e26/Pillow-10.0.0.tar.gz
-            sha256: 9c82b5b3e043c7af0d95792d0d20ccf68f61a1fec6b3530e718b688422727396
+            url: https://files.pythonhosted.org/packages/64/9e/7e638579cce7dc346632f020914141a164a872be813481f058883ee8d421/Pillow-10.0.1.tar.gz
+            sha256: d72967b06be9300fed5cfbc8b5bafceec48bf7cdc7dab66b1d2549035287191d
             x-checker-data:
               type: pypi
               name: Pillow
 
+      - name: python3-chardet
+        buildsystem: simple
+        build-commands:
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "chardet>=5.0.0" --no-build-isolation
+        sources:
+          - type: file
+            url: https://files.pythonhosted.org/packages/f3/0d/f7b6ab21ec75897ed80c17d79b15951a719226b9fababf1e40ea74d69079/chardet-5.2.0.tar.gz
+            sha256: 1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7
+            x-checker-data:
+              type: pypi
+              name: chardet
+
+      - name: python3-package-installation
+        buildsystem: simple
+        build-commands:
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} --no-build-isolation PyMuPDF PyMuPDFb
+        sources:
+        - type: file
+          url: https://files.pythonhosted.org/packages/23/3b/98a89c0aee1144ccc3e9014fd9740b6b405884697b771846b7accf459c13/PyMuPDF-1.23.3-cp311-none-manylinux2014_aarch64.whl
+          sha256: 7218c1099205edb3357cb5713661d11d7c04aaa910645da64e17c2d050d61352
+          only-arches:
+          - aarch64
+        - type: file
+          url: https://files.pythonhosted.org/packages/56/44/15329796d0019724f9ae384fd630bc6a9d9979fc024322a5e89a93d2cc92/PyMuPDF-1.23.3-cp311-none-manylinux2014_x86_64.whl
+          sha256: 0304d5def03d2bedf951179624ea636470b5ee0a706ea37636f7a3b2b08561a5
+          only-arches:
+          - x86_64
+        - type: file
+          url: https://files.pythonhosted.org/packages/80/72/be029363f0e0e603e79afb443cff4dd81369b921bfbfed009457839d1169/PyMuPDFb-1.23.3-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+          sha256: 924f3f2229d232c965705d120b3ff38bbc37459af9d0e798b582950f875bee92
+          only-arches:
+          - aarch64
+        - type: file
+          url: https://files.pythonhosted.org/packages/34/cf/bb6a3bad0ffdea1fb9fcae53de6c1b9187746c32e17377ff8f36b9d98ee4/PyMuPDFb-1.23.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+          sha256: 6c287b9ce5ed397043c6e13df19640c94a348e9edc8012d9a7b001c69ba30ca9
+          only-arches:
+          - x86_64
