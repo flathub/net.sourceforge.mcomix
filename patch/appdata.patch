@@ -1,13 +1,14 @@
 --- mcomix-3.0.0/share/metainfo/mcomix.metainfo.xml	2023-09-16 15:14:30.000000000 +0800
 +++ mcomix-3.0.0-b/share/metainfo/mcomix.metainfo.xml	2023-09-17 14:21:09.937440716 +0800
-@@ -31,7 +31,11 @@
+@@ -31,7 +31,12 @@
   <developer_name>The MComix Team</developer_name>
   <update_contact>https://sourceforge.net/p/mcomix/bugs/</update_contact>
  
 - <provides>
--  <binary>mcomix</provides>
+-  <binary>mcomix</binary>
 - </provides>
 + <releases>
++    <release version="3.1.0" date="2024-02-20"/>
 +    <release version="3.0.0" date="2023-12-22"/>
 +    <release version="2.1.1" date="2023-05-16"/>
 +    <release version="2.1.0" date="2022-12-17"/>
