@@ -1,5 +1,5 @@
---- mcomix.metainfo-old.xml	2023-10-29 03:03:09.000000000 -0500
-+++ mcomix.metainfo-new.xml	2024-06-03 23:31:00.613460173 -0500
+--- mcomix-3.1.0/share/metainfo/mcomix.metainfo.xml	2023-10-29 03:03:09.000000000 -0500
++++ mcomix-3.1.0-b/share/metainfo/mcomix.metainfo.xml	2024-06-03 23:31:00.613460173 -0500
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="UTF-8"?>
  <!-- Copyright 2023 Moritz Brunner -->
