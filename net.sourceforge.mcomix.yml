@@ -69,16 +69,13 @@ modules:
         rm */apps/*.svg
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/mcomix/MComix-3.0.0/mcomix-3.0.0.tar.gz
-        sha256: 2270c43d75e2878f64e4c886d5b013125c42894b364594d5ec979154c4dea004
+        url: https://downloads.sourceforge.net/project/mcomix/MComix-3.1.0/mcomix-3.1.0.tar.gz
+        sha256: f9286eba7ffbc3ce9528135a9939823c425f3bbe9f74a639f8706fcc28b4c427
         x-checker-data:
           type: anitya
           project-id: 8886
           stable-only: true
           url-template: https://downloads.sourceforge.net/project/mcomix/MComix-$version/mcomix-$version.tar.gz
-
-      - type: patch
-        path: patch/appdata.patch
 
       - type: shell
         commands:
@@ -115,8 +112,8 @@ modules:
         buildsystem: meson
         sources:
           - type: archive
-            url: https://gitlab.gnome.org/GNOME/pygobject/-/archive/3.46.0/pygobject-3.46.0.tar.gz
-            sha256: 70c7338e52fb919619ff98a92c1c27d056b96c600933566815018c1f196f1d1d
+            url: https://gitlab.gnome.org/GNOME/pygobject/-/archive/3.48.2/pygobject-3.48.2.tar.gz
+            sha256: 390ab9938eff280fd05e1004b65be588b9ee8af0005d1836d63fd6dbfd8ee9ae
             x-checker-data:
               type: anitya
               project-id: 13158
@@ -127,8 +124,8 @@ modules:
             buildsystem: meson
             sources:
               - type: archive
-                url: https://github.com/pygobject/pycairo/archive/v1.25.1/pycairo-v1.25.1.tar.gz
-                sha256: fabe2a6ae082e7970084ce61b29087f2211f098a099b0d6de68caac4be1263fb
+                url: https://github.com/pygobject/pycairo/archive/v1.26.0/pycairo-v1.26.0.tar.gz
+                sha256: b969ca68551c4ba37d08faa0da3ddae090b489062e8008f84db8e60bbe4ae9d8
                 x-checker-data:
                   type: anitya
                   project-id: 13166
@@ -142,8 +139,8 @@ modules:
             --prefix=${FLATPAK_DEST} "Pillow>=6.0.0" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/f8/3e/32cbd0129a28686621434cbf17bb64bf1458bfb838f1f668262fefce145c/pillow-10.2.0.tar.gz
-            sha256: e87f0b2c78157e12d7686b27d63c070fd65d994e8ddae6f328e0dcf4a0cd007e
+            url: https://files.pythonhosted.org/packages/ef/43/c50c17c5f7d438e836c169e343695534c38c77f60e7c90389bd77981bc21/pillow-10.3.0.tar.gz
+            sha256: 9d2455fbf44c914840c793e89aa82d0e1763a14253a000743719ae5946814b2d
             x-checker-data:
               type: pypi
               name: Pillow
