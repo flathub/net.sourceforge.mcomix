@@ -77,6 +77,9 @@ modules:
           stable-only: true
           url-template: https://downloads.sourceforge.net/project/mcomix/MComix-$version/mcomix-$version.tar.gz
 
+      - type: patch
+        path: patch/appdata.patch
+
       - type: shell
         commands:
           - sed -i "s:constants.APPNAME:'${FLATPAK_ID}':g" ./mcomix/run.py
