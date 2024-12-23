@@ -2,6 +2,8 @@ app-id: net.sourceforge.mcomix
 runtime: org.freedesktop.Platform
 runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm18
 rename-icon: mcomix
 rename-desktop-file: mcomix.desktop
 rename-appdata-file: mcomix.metainfo.xml
@@ -111,6 +113,7 @@ modules:
             fin_img.save(path)
 
     modules:
+      - pymupdf.yml
       - name: pygobject
         buildsystem: meson
         sources:
@@ -161,29 +164,3 @@ modules:
               type: pypi
               name: chardet
 
-      - name: python3-package-installation
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} --no-build-isolation PyMuPDF PyMuPDFb
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/23/3b/98a89c0aee1144ccc3e9014fd9740b6b405884697b771846b7accf459c13/PyMuPDF-1.23.3-cp311-none-manylinux2014_aarch64.whl
-            sha256: 7218c1099205edb3357cb5713661d11d7c04aaa910645da64e17c2d050d61352
-            only-arches:
-              - aarch64
-          - type: file
-            url: https://files.pythonhosted.org/packages/56/44/15329796d0019724f9ae384fd630bc6a9d9979fc024322a5e89a93d2cc92/PyMuPDF-1.23.3-cp311-none-manylinux2014_x86_64.whl
-            sha256: 0304d5def03d2bedf951179624ea636470b5ee0a706ea37636f7a3b2b08561a5
-            only-arches:
-              - x86_64
-          - type: file
-            url: https://files.pythonhosted.org/packages/80/72/be029363f0e0e603e79afb443cff4dd81369b921bfbfed009457839d1169/PyMuPDFb-1.23.3-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
-            sha256: 924f3f2229d232c965705d120b3ff38bbc37459af9d0e798b582950f875bee92
-            only-arches:
-              - aarch64
-          - type: file
-            url: https://files.pythonhosted.org/packages/34/cf/bb6a3bad0ffdea1fb9fcae53de6c1b9187746c32e17377ff8f36b9d98ee4/PyMuPDFb-1.23.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-            sha256: 6c287b9ce5ed397043c6e13df19640c94a348e9edc8012d9a7b001c69ba30ca9
-            only-arches:
-              - x86_64
