@@ -1,9 +1,9 @@
 app-id: net.sourceforge.mcomix
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
+  - org.freedesktop.Sdk.Extension.llvm21
 rename-icon: mcomix
 rename-desktop-file: mcomix.desktop
 rename-appdata-file: mcomix.metainfo.xml
@@ -113,9 +113,12 @@ modules:
 
     modules:
       - pymupdf.yml
+      - buildbackend.yml
       - name: python3-pygobject
         buildsystem: simple
         build-commands:
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "pycairo" --no-build-isolation
           - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
             --prefix=${FLATPAK_DEST} "pygobject" --no-build-isolation
         sources:
@@ -137,6 +140,8 @@ modules:
         build-commands:
           - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
             --prefix=${FLATPAK_DEST} "pybind11<=4.0" --no-build-isolation
+        cleanup:
+          - '*'
         sources:
           - type: file
             url: https://files.pythonhosted.org/packages/cd/8a/37362fc2b949d5f733a8b0f2ff51ba423914cabefe69f1d1b6aab710f5fe/pybind11-3.0.1-py3-none-any.whl
