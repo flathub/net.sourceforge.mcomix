@@ -129,8 +129,8 @@ modules:
               name: pycairo
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/d3/a5/68f883df1d8442e3b267cb92105a4b2f0de819bd64ac9981c2d680d3f49f/pygobject-3.54.5.tar.gz
-            sha256: b6656f6348f5245606cf15ea48c384c7f05156c75ead206c1b246c80a22fb585
+            url: https://files.pythonhosted.org/packages/c9/f6/46e5d170c46a9fcf44c740bad5f919fccb3e822d7578bd24b9d8d5918312/pygobject-3.56.1.tar.gz
+            sha256: 2ec1cc8c55c7ffeebb97e58a9bba7aa1e74611f1173628084685446804a8881a
             x-checker-data:
               name: pygobject
               type: pypi
@@ -171,8 +171,8 @@ modules:
             --prefix=${FLATPAK_DEST} "chardet>=5.0.0" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/f3/0d/f7b6ab21ec75897ed80c17d79b15951a719226b9fababf1e40ea74d69079/chardet-5.2.0.tar.gz
-            sha256: 1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7
+            url: https://files.pythonhosted.org/packages/1d/94/7af830a4c63df020644aa99d76147d003a1463f255d0a054958978be5a8a/chardet-7.2.0.tar.gz
+            sha256: 4ef7292b1342ea805c32cce58a45db204f59d080ed311d6cdaa7ca747fcc0cd5
             x-checker-data:
               type: pypi
               name: chardet
