@@ -38,8 +38,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ip7z/7zip.git
-        tag: '26.00'
-        commit: 839151eaaad24771892afaae6bac690e31e58384
+        tag: '26.01'
+        commit: 8c63d71ff886bda90c86db28466287f977374237
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
@@ -129,8 +129,8 @@ modules:
               name: pycairo
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/d3/a5/68f883df1d8442e3b267cb92105a4b2f0de819bd64ac9981c2d680d3f49f/pygobject-3.54.5.tar.gz
-            sha256: b6656f6348f5245606cf15ea48c384c7f05156c75ead206c1b246c80a22fb585
+            url: https://files.pythonhosted.org/packages/a2/80/09247a2be28af2c2240132a0af6c1005a2b1d089242b13a2cd782d2de8d7/pygobject-3.56.2.tar.gz
+            sha256: b816098969544081de9eecedb94ad6ac59c77e4d571fe7051f18bebcec074313
             x-checker-data:
               name: pygobject
               type: pypi
@@ -144,8 +144,8 @@ modules:
           - '*'
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/88/c5/e98d9c51f3d5300d5e40ad9037dd6b3b60736fd02ab68dcc98c96be7592d/pybind11-3.0.2-py3-none-any.whl
-            sha256: f8a6500548919cc33bcd220d5f984688326f574fa97f1107f2f4fdb4c6fb019f
+            url: https://files.pythonhosted.org/packages/b3/06/c3a23c9a0263b136c519f033a58d4641e73065fefc7754e9667ec206d992/pybind11-3.0.4-py3-none-any.whl
+            sha256: 961720ee652da51d531b7b2451a6bd2bc042b0106e6d9baa48ecb7d58034ce63
             x-checker-data:
               type: pypi
               name: pybind11
@@ -158,8 +158,8 @@ modules:
             --prefix=${FLATPAK_DEST} "Pillow>=6.0.0" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/1f/42/5c74462b4fd957fcd7b13b04fb3205ff8349236ea74c7c375766d6c82288/pillow-12.1.1.tar.gz
-            sha256: 9ad8fa5937ab05218e2b6a4cff30295ad35afd2f83ac592e68c0d871bb0fdbc4
+            url: https://files.pythonhosted.org/packages/8c/21/c2bcdd5906101a30244eaffc1b6e6ce71a31bd0742a01eb89e660ebfac2d/pillow-12.2.0.tar.gz
+            sha256: a830b1a40919539d07806aa58e1b114df53ddd43213d9c8b75847eee6c0182b5
             x-checker-data:
               type: pypi
               name: Pillow
@@ -171,8 +171,8 @@ modules:
             --prefix=${FLATPAK_DEST} "chardet>=5.0.0" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/f3/0d/f7b6ab21ec75897ed80c17d79b15951a719226b9fababf1e40ea74d69079/chardet-5.2.0.tar.gz
-            sha256: 1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7
+            url: https://files.pythonhosted.org/packages/19/b6/9df434a8eeba2e6628c465a1dfa31034228ef79b26f76f46278f4ef7e49d/chardet-7.4.3.tar.gz
+            sha256: cc1d4eb92a4ec1c2df3b490836ffa46922e599d34ce0bb75cf41fd2bf6303d56
             x-checker-data:
               type: pypi
               name: chardet
