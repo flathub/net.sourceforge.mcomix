@@ -23,6 +23,9 @@ finish-args:
   - --filesystem=/media
   - --filesystem=/run/media
 
+cleanup:
+  - /share/man
+
 modules:
   - name: 7-zip
     buildsystem: simple
@@ -76,6 +79,7 @@ modules:
         url: https://downloads.sourceforge.net/project/mcomix/MComix-3.1.1/mcomix-3.1.1.tar.gz
         sha256: a10aaaed7bc07deb74efde93bf9a8a27e1bcbf1824a0519b264cfee582becef8
         x-checker-data:
+          is-main-source: true
           type: anitya
           project-id: 8886
           stable-only: true
@@ -139,7 +143,7 @@ modules:
         buildsystem: simple
         build-commands:
           - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "pybind11<=4.0" --no-build-isolation
+            --prefix=${FLATPAK_DEST} "pybind11" --no-build-isolation
         cleanup:
           - '*'
         sources:
@@ -155,7 +159,7 @@ modules:
         buildsystem: simple
         build-commands:
           - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "Pillow>=6.0.0" --no-build-isolation
+            --prefix=${FLATPAK_DEST} "Pillow" --no-build-isolation
         sources:
           - type: file
             url: https://files.pythonhosted.org/packages/8c/21/c2bcdd5906101a30244eaffc1b6e6ce71a31bd0742a01eb89e660ebfac2d/pillow-12.2.0.tar.gz
@@ -168,12 +172,12 @@ modules:
         buildsystem: simple
         build-commands:
           - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "chardet>=5.0.0" --no-build-isolation
+            --prefix=${FLATPAK_DEST} "chardet" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/19/b6/9df434a8eeba2e6628c465a1dfa31034228ef79b26f76f46278f4ef7e49d/chardet-7.4.3.tar.gz
-            sha256: cc1d4eb92a4ec1c2df3b490836ffa46922e599d34ce0bb75cf41fd2bf6303d56
+            url: https://files.pythonhosted.org/packages/8c/6c/0a40afdb50a0fe041ab95553b835a8160b6cf0e81edf2ae2fe9f5224cbf9/chardet-7.4.3-py3-none-any.whl
+            sha256: 1173b74051570cf08099d7429d92e4882d375ad4217f92a6e5240ccfb26f231e
             x-checker-data:
               type: pypi
               name: chardet
-
+              packagetype: bdist_wheel
