@@ -1,9 +1,7 @@
 app-id: net.sourceforge.mcomix
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm21
 rename-icon: mcomix
 rename-desktop-file: mcomix.desktop
 rename-appdata-file: mcomix.metainfo.xml
@@ -27,25 +25,26 @@ cleanup:
   - /share/man
 
 modules:
+  - python3-requirements.yaml
   - name: 7-zip
     buildsystem: simple
     build-commands:
       - |
-        for bundle in Alone2 SFXCon; do
+        for bundle in Alone7z SFXCon; do
           pushd CPP/7zip/Bundles/${bundle}
           make -j ${FLATPAK_BUILDER_N_JOBS} -f ../../cmpl_gcc.mak
           popd
         done
-      - install -Dm755 CPP/7zip/Bundles/Alone2/b/g/7zz   $FLATPAK_DEST/bin/7z
+      - install -Dm755 CPP/7zip/Bundles/Alone7z/b/g/7zr  $FLATPAK_DEST/bin/7z
       - install -Dm755 CPP/7zip/Bundles/SFXCon/b/g/7zCon $FLATPAK_DEST/bin/7zCon.sfx
     sources:
-      - type: git
-        url: https://github.com/ip7z/7zip.git
-        tag: '26.05'
-        commit: b88c6bc09339de32f7d18bbab900686b244f42ba
+      - type: archive
+        url: https://github.com/ip7z/7zip/archive/refs/tags/26.05.tar.gz
+        sha256: 989c658cef4c13124ed1f4ff7330a6ce5ab22cefdbbc9daae9b2c110dde9a63b
         x-checker-data:
-          type: git
-          tag-pattern: ^([\d.]+)$
+          type: anitya
+          project-id: 372314
+          url-template: https://github.com/ip7z/7zip/archive/refs/tags/$version.tar.gz
 
   - name: unrar
     no-autogen: true
@@ -115,69 +114,3 @@ modules:
             fin_img.paste(img, (int((size-w)/2), int((size-h)/2)))
             fin_img.save(path)
 
-    modules:
-      - pymupdf.yml
-      - buildbackend.yml
-      - name: python3-pygobject
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "pycairo" --no-build-isolation
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "pygobject" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/bb/5e/19ab2572981a996ce96b853a189d2dcced40506b67d9555a7568457abcf2/pycairo-1.29.2.tar.gz
-            sha256: 3e69fff74fe64f5ba2dfa31f67c6bdf26413342574047437d2ac520d35e9a489
-            x-checker-data:
-              name: pycairo
-              type: pypi
-          - type: file
-            url: https://files.pythonhosted.org/packages/65/1e/d590f82e14db75945b03f6b63e0f19662e0340babd8f574fdb1bb5a015e2/pygobject-3.58.1.tar.gz
-            sha256: 4c80598ade17fbaa7798e01a25d0bf29ce109740786026a074c5c62bb3e79d23
-            x-checker-data:
-              name: pygobject
-              type: pypi
-
-      - name: python3-pybind11
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "pybind11" --no-build-isolation
-        cleanup:
-          - '*'
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/33/fd/8762f7ee3e4e4be6d1d846cffb4916dd9bb02b2f800d3603718a0efe494c/pybind11-3.1.0-py3-none-any.whl
-            sha256: b8488090f8acffbcb6b5d6a85571a6827a0a2981ffb75e5a0b27b87c4a6b7dd0
-            x-checker-data:
-              type: pypi
-              name: pybind11
-              packagetype: bdist_wheel
-
-      - name: python3-Pillow
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "Pillow" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/ce/a4/9cc30690a394a8305e8be4c9036aa16d0dfddadd09079860b582f562496d/pillow-13.0.0.tar.gz
-            sha256: cdcd1ba258178f7356d74170c9a81ba4eab6a5d55748bc402a5a2a6fe6be3510
-            x-checker-data:
-              type: pypi
-              name: Pillow
-
-      - name: python3-chardet
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "chardet" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/cc/75/88a3eb36264375ff951bd2f9397c409727ab6aa6a18e1bd933851571d421/chardet-7.7.0-py3-none-any.whl
-            sha256: 11cf9b719ea3675a2a7d8a3071bbe4d7ea24b26bfe39a51588d515ddd05cacad
-            x-checker-data:
-              type: pypi
-              name: chardet
-              packagetype: bdist_wheel
