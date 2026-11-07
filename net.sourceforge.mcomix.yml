@@ -65,16 +65,11 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --prefix=${FLATPAK_DEST}
         --no-build-isolation .[fileformats]
       - cp -a share -t /app/
-      - |
-        resize=$PWD/resize.py
-        cd $FLATPAK_DEST/share/icons/hicolor
-        for x in $(ls);do
-          [ -e ${x}/apps/mcomix.png ] || continue
-          size=${x%x*}
-          python ${resize} -s ${size} ${x}/apps/mcomix.png
-          echo ${size}_ok
-        done
-        rm */apps/*.svg
+      # Remove non-square icons to satify flatpak builder
+      - rm /app/share/icons/hicolor/*/apps/mcomix.png
+      - rm /app/share/icons/hicolor/*/apps/mcomix.svg
+    post-install:
+      - install -Dm644 mcomix.png -t /app/share/icons/hicolor/256x256/apps/
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/mcomix/MComix-3.2.0/mcomix-3.2.0.tar.gz
@@ -85,34 +80,9 @@ modules:
           project-id: 8886
           stable-only: true
           url-template: https://downloads.sourceforge.net/project/mcomix/MComix-$version/mcomix-$version.tar.gz
-
+      # Provide a square icon to satify flatpak builder
+      - type: file
+        path: mcomix.png
       - type: shell
         commands:
           - sed -i "s:constants.APPNAME:'${FLATPAK_ID}':g" ./mcomix/run.py
-
-      - type: script
-        dest-filename: resize.py
-        commands:
-          - |
-            from PIL import Image
-            from pathlib import Path
-            import argparse
-
-            parser = argparse.ArgumentParser()
-            parser.add_argument("-s", type=str,metavar='size',required=True)
-            parser.add_argument("path", type=str)
-
-            args = vars(parser.parse_args())
-            size: int = int(args['s'])
-            path: Path = Path(args['path'])
-
-            fin_img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
-            img = Image.open(path)
-            in_w,in_h = img.size
-            rate = in_w / in_h
-            w = int(size if rate > 1 else size*rate)
-            h = int(size if rate <= 1 else size/rate)
-            img = img.resize((w,h), Image.Resampling.LANCZOS)
-            fin_img.paste(img, (int((size-w)/2), int((size-h)/2)))
-            fin_img.save(path)
-
