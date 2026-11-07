@@ -1,0 +1,136 @@
+# Generated with flatpak-pip-generator --yaml -r requirements.txt --runtime=org.freedesktop.Sdk//26.08 --prefer-wheels=pillow,numpy,PyMuPDF,onnxruntime,psutil,pyyaml
+name: python3-requirements
+buildsystem: simple
+build-commands: []
+modules:
+  - name: python3-meson-python
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "meson-python" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/96/62/0c1cf20fe158b0e623e78acbf5fb6de5f1410a408f65f727e4090497627b/meson_python-0.22.1-py3-none-any.whl
+        sha256: 258fde948cf45aab5df23fcc9e17a9050ee73d4e1002fe6cf86519f61c414778
+      - type: file
+        url: https://files.pythonhosted.org/packages/b9/8e/d883718e872abc214ba053f60f7e6edc2abd5ffbd1544beb01a9c92ddd3c/pyproject_metadata-0.12.1-py3-none-any.whl
+        sha256: f7162d580a96386a8eb096da06215f981f547d1490f03055ef99e323bc2da427
+  - name: python3-PyMuPDF
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "PyMuPDF" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/e8/2d/d2a548598be01649e2d46231d151a6c56d10b964d94043a335ae56ea2d92/flatbuffers-25.12.19-py2.py3-none-any.whl
+        sha256: 7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4
+      - type: file
+        url: https://files.pythonhosted.org/packages/7e/cd/fe58041e9011f307c490e3e17dd48cc516448f7c698a3f2d9d9d65d7e6a8/networkx-3.7-py3-none-any.whl
+        sha256: e3fd2c13a7814cee3746340d8d7f8598a67f16a58bf47fb7f8793fab6efca1b0
+      - type: file
+        url: https://files.pythonhosted.org/packages/16/d5/928078d2b28f26829b138b4a6c3980045022fb409f570657a224ae60ef4e/numpy-2.5.4-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+        sha256: d549420b8858885cea8838a727842249218b9c1da24dd517e25c9c7a948310a3
+        only-arches:
+          - x86_64
+      - type: file
+        url: https://files.pythonhosted.org/packages/63/d6/34b0a2b0741386a63025a65a2c09caaaaaad6d0ca95b66cd65c30dd7fcb5/numpy-2.5.4-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
+        sha256: 4054173604cd8658796053f1f3bc0befb68ec1c0762c57fdad61e199256a8617
+        only-arches:
+          - aarch64
+      - type: file
+        url: https://files.pythonhosted.org/packages/aa/74/a891a659ccc427469de0d7bdbd5ff770a35f73084ee590ce02456cf61f7f/onnxruntime-1.31.1-cp314-cp314-manylinux_2_28_x86_64.whl
+        sha256: c20d7f15d84427db070b163f78c2c7146cc93edd6113fa7327671259a24184fe
+        only-arches:
+          - x86_64
+      - type: file
+        url: https://files.pythonhosted.org/packages/06/ef/98f0060d6cf58f9f663268fef65fe729120b8fbe26ef35eaa2c8d9030d33/onnxruntime-1.31.1-cp314-cp314-manylinux_2_28_aarch64.whl
+        sha256: c878686b75cade1ed59131aa018ab004b1e64368b0d54041912450b9642cf04f
+        only-arches:
+          - aarch64
+      - type: file
+        url: https://files.pythonhosted.org/packages/e4/04/d52c7016b04b6c5108f26691f9d33ec82a9b65d041f1a9c771137693d618/protobuf-7.36.2-py3-none-any.whl
+        sha256: bdb3a345d48db958e6ce1f18e508beb0cc981d64f24088427549c866cd039f1e
+      - type: file
+        url: https://files.pythonhosted.org/packages/b5/70/5d8df3b09e25bce090399cf48e452d25c935ab72dad19406c77f4e828045/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl
+        sha256: 076a2d2f923fd4821644f5ba89f059523da90dc9014e85f8e45a5774ca5bc6f9
+        only-arches:
+          - x86_64
+      - type: file
+        url: https://files.pythonhosted.org/packages/63/65/37648c0c158dc222aba51c089eb3bdfa238e621674dc42d48706e639204f/psutil-7.2.2-cp36-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl
+        sha256: b0726cecd84f9474419d67252add4ac0cd9811b04d61123054b9fb6f57df6e9e
+        only-arches:
+          - aarch64
+      - type: file
+        url: https://files.pythonhosted.org/packages/f4/dc/e244c162ab621a45bfe36e33fe432264ef7e40592f739474864df66a2dd8/pymupdf-2.1-cp311-abi3-manylinux_2_28_x86_64.whl
+        sha256: a9efa2e9e5f469d3b5749199329739cfef1ff1d1846538ced4885c544eecbcd9
+        only-arches:
+          - x86_64
+      - type: file
+        url: https://files.pythonhosted.org/packages/10/f9/bf895749cbe37a881f4e3d6eb29b6112bedf366829f3709c94c1e3b6ac22/pymupdf-2.1-cp311-abi3-manylinux_2_28_aarch64.whl
+        sha256: 5a1a1fee36d5598013614e06eef25aaa68819d828f5401170dbcaf6f2714d1dd
+        only-arches:
+          - aarch64
+      - type: file
+        url: https://files.pythonhosted.org/packages/38/19/21e262de4e1ddbcd552889e5f04147f83ed219dd13d1e0e0db46ab4d2347/pymupdf4llm-2.1-py3-none-any.whl
+        sha256: 2fe8bb344444c6a8ef41fd745d2d10f6da59df6e104ef20f35d51dd26914b5fb
+      - type: file
+        url: https://files.pythonhosted.org/packages/e4/13/7a1edc4029348e728114cf37837dd121a7439defd668caa087d128b5df2d/pymupdf_layout-2.1-py3-none-any.whl
+        sha256: e7e00bc50ec9113d36bdbb0dd5cdafa5f4d61e22e598960fc187ee4f721f5095
+      - type: file
+        url: https://files.pythonhosted.org/packages/88/f9/16491d7ed2a919954993e48aa941b200f38040928474c9e85ea9e64222c3/pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+        sha256: c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5
+        only-arches:
+          - x86_64
+      - type: file
+        url: https://files.pythonhosted.org/packages/92/b5/47e807c2623074914e29dabd16cbbdd4bf5e9b2db9f8090fa64411fc5382/pyyaml-6.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl
+        sha256: 501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7
+        only-arches:
+          - aarch64
+      - type: file
+        url: https://files.pythonhosted.org/packages/99/55/db07de81b5c630da5cbf5c7df646580ca26dfaefa593667fc6f2fe016d2e/tabulate-0.10.0-py3-none-any.whl
+        sha256: f0b0622e567335c8fabaaa659f1b33bcb6ddfe2e496071b743aa113f8774f2d3
+  - name: python3-pycairo
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pycairo" --no-build-isolation
+    sources:
+      - &id001
+        type: file
+        url: https://files.pythonhosted.org/packages/bb/5e/19ab2572981a996ce96b853a189d2dcced40506b67d9555a7568457abcf2/pycairo-1.29.2.tar.gz
+        sha256: 3e69fff74fe64f5ba2dfa31f67c6bdf26413342574047437d2ac520d35e9a489
+  - name: python3-pygobject
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pygobject" --no-build-isolation
+    sources:
+      - *id001
+      - type: file
+        url: https://files.pythonhosted.org/packages/65/1e/d590f82e14db75945b03f6b63e0f19662e0340babd8f574fdb1bb5a015e2/pygobject-3.58.1.tar.gz
+        sha256: 4c80598ade17fbaa7798e01a25d0bf29ce109740786026a074c5c62bb3e79d23
+  - name: python3-Pillow
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "Pillow" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/1d/f2/1371707ce438ba9a43f9d24089828494ec6f9396e28cd7903aa704dd6306/pillow-13.0.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+        sha256: e91c2b1cbeae768c98752e67e717e283d68dae45717b41f2d91eaee648e37b7d
+        only-arches:
+          - x86_64
+      - type: file
+        url: https://files.pythonhosted.org/packages/83/16/b603274617b3e6728da3a0133d4fba1ea8d7fbe0c4ea5fef9cbffa398b8b/pillow-13.0.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
+        sha256: 5933fcea5a5ba64c686f55c886a115cbfd92f2900460784a1e79909fdbafd7b6
+        only-arches:
+          - aarch64
+  - name: python3-chardet
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "chardet" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/cc/75/88a3eb36264375ff951bd2f9397c409727ab6aa6a18e1bd933851571d421/chardet-7.7.0-py3-none-any.whl
+        sha256: 11cf9b719ea3675a2a7d8a3071bbe4d7ea24b26bfe39a51588d515ddd05cacad
