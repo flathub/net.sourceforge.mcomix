@@ -1,0 +1,9 @@
+# Use the following command to regenarete the Python modules
+# flatpak-pip-generator --yaml -r requirements.txt --runtime=org.freedesktop.Sdk//26.08 --prefer-wheels=pillow,PyMuPDF
+
+meson-python
+PyMuPDF
+pycairo
+pygobject
+Pillow
+chardet
